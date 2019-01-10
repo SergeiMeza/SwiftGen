@@ -8,11 +8,10 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable attributes
 // swiftlint:disable vertical_whitespace_closing_braces
-
 // swiftlint:disable identifier_name line_length type_body_length
+
 // MARK: - AbstractEntity
 
-@objc(AbstractEntity)
 public class AbstractEntity: NSManagedObject {
   public class func entityName() -> String {
     return "AbstractEntity"
@@ -32,7 +31,6 @@ public class AbstractEntity: NSManagedObject {
 
 // MARK: - ChildEntity
 
-@objc(ChildEntity)
 public class ChildEntity: MainEntity {
   override public class func entityName() -> String {
     return "ChildEntity"
@@ -52,7 +50,6 @@ public class ChildEntity: MainEntity {
 
 // MARK: - MainEntity
 
-@objc(MainEntity)
 public class MainEntity: NSManagedObject {
   public class func entityName() -> String {
     return "MainEntity"
@@ -207,7 +204,6 @@ extension MainEntity {
 
 // MARK: - NewEntity
 
-@objc(NewEntity)
 public class NewEntity: AbstractEntity {
   override public class func entityName() -> String {
     return "NewEntity"
@@ -228,7 +224,6 @@ public class NewEntity: AbstractEntity {
 
 // MARK: - SecondaryEntity
 
-@objc(SecondaryEntity)
 public class SecondaryEntity: NSManagedObject {
   public class func entityName() -> String {
     return "SecondaryEntity"
@@ -265,5 +260,4 @@ extension SecondaryEntity {
   @objc(removeManyToMany:)
   @NSManaged public func removeFromManyToMany(_ values: Set<MainEntity>)
 }
-
 // swiftlint:enable identifier_name line_length type_body_length

@@ -8,6 +8,5 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable attributes
 // swiftlint:disable vertical_whitespace_closing_braces
-
 // swiftlint:disable identifier_name line_length type_body_length
 // swiftlint:enable identifier_name line_length type_body_length

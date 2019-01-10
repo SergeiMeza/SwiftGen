@@ -12,16 +12,17 @@ import Foundation
 
 // MARK: - AbstractEntity
 
-public class AbstractEntity: NSManagedObject {
-  public class func entityName() -> String {
+@objc(AbstractEntity)
+internal class AbstractEntity: NSManagedObject {
+  internal class func entityName() -> String {
     return "AbstractEntity"
   }
 
-  public class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+  internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
   }
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<AbstractEntity> {
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<AbstractEntity> {
     return NSFetchRequest<AbstractEntity>(entityName: entityName())
   }
 
@@ -31,16 +32,17 @@ public class AbstractEntity: NSManagedObject {
 
 // MARK: - ChildEntity
 
-public class ChildEntity: MainEntity {
-  override public class func entityName() -> String {
+@objc(ChildEntity)
+internal class ChildEntity: MainEntity {
+  override internal class func entityName() -> String {
     return "ChildEntity"
   }
 
-  override public class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+  override internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
   }
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<ChildEntity> {
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<ChildEntity> {
     return NSFetchRequest<ChildEntity>(entityName: entityName())
   }
 
@@ -50,40 +52,41 @@ public class ChildEntity: MainEntity {
 
 // MARK: - MainEntity
 
-public class MainEntity: NSManagedObject {
-  public class func entityName() -> String {
+@objc(MainEntity)
+internal class MainEntity: NSManagedObject {
+  internal class func entityName() -> String {
     return "MainEntity"
   }
 
-  public class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+  internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
   }
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<MainEntity> {
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<MainEntity> {
     return NSFetchRequest<MainEntity>(entityName: entityName())
   }
 
   // swiftlint:disable implicitly_unwrapped_optional
-  @NSManaged public var attributedString: NSAttributedString?
-  @NSManaged public var binaryData: Data?
-  @NSManaged public var boolean: Bool
-  @NSManaged public var date: Date?
-  @NSManaged public var decimal: NSDecimalNumber?
-  @NSManaged public var double: Double
-  @NSManaged public var float: Float
-  @NSManaged public var int16: Int16
-  @NSManaged public var int32: Int32
-  @NSManaged public var int64: Int64
-  @NSManaged public var nonOptional: String!
-  @NSManaged public var string: String?
-  @NSManaged public var transformable: AnyObject?
-  @NSManaged public var transient: String?
-  @NSManaged public var uri: URL?
-  @NSManaged public var uuid: UUID?
-  @NSManaged public var manyToMany: Set<SecondaryEntity>
-  @NSManaged public var oneToMany: NSOrderedSet
-  @NSManaged public var oneToOne: SecondaryEntity?
-  @NSManaged public var fetchedProperty: [NewEntity]
+  @NSManaged internal var attributedString: NSAttributedString?
+  @NSManaged internal var binaryData: Data?
+  @NSManaged internal var boolean: Bool
+  @NSManaged internal var date: Date?
+  @NSManaged internal var decimal: NSDecimalNumber?
+  @NSManaged internal var double: Double
+  @NSManaged internal var float: Float
+  @NSManaged internal var int16: Int16
+  @NSManaged internal var int32: Int32
+  @NSManaged internal var int64: Int64
+  @NSManaged internal var nonOptional: String!
+  @NSManaged internal var string: String?
+  @NSManaged internal var transformable: AnyObject?
+  @NSManaged internal var transient: String?
+  @NSManaged internal var uri: URL?
+  @NSManaged internal var uuid: UUID?
+  @NSManaged internal var manyToMany: Set<SecondaryEntity>
+  @NSManaged internal var oneToMany: NSOrderedSet
+  @NSManaged internal var oneToOne: SecondaryEntity?
+  @NSManaged internal var fetchedProperty: [NewEntity]
   // swiftlint:enable implicitly_unwrapped_optional
 }
 
@@ -204,44 +207,46 @@ extension MainEntity {
 
 // MARK: - NewEntity
 
-public class NewEntity: AbstractEntity {
-  override public class func entityName() -> String {
+@objc(NewEntity)
+internal class NewEntity: AbstractEntity {
+  override internal class func entityName() -> String {
     return "NewEntity"
   }
 
-  override public class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+  override internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
   }
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<NewEntity> {
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<NewEntity> {
     return NSFetchRequest<NewEntity>(entityName: entityName())
   }
 
   // swiftlint:disable implicitly_unwrapped_optional
-  @NSManaged public var identifier: UUID?
+  @NSManaged internal var identifier: UUID?
   // swiftlint:enable implicitly_unwrapped_optional
 }
 
 // MARK: - SecondaryEntity
 
-public class SecondaryEntity: NSManagedObject {
-  public class func entityName() -> String {
+@objc(SecondaryEntity)
+internal class SecondaryEntity: NSManagedObject {
+  internal class func entityName() -> String {
     return "SecondaryEntity"
   }
 
-  public class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
+  internal class func entity(in managedObjectContext: NSManagedObjectContext) -> NSEntityDescription? {
     return NSEntityDescription.entity(forEntityName: entityName(), in: managedObjectContext)
   }
 
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<SecondaryEntity> {
+  @nonobjc internal class func fetchRequest() -> NSFetchRequest<SecondaryEntity> {
     return NSFetchRequest<SecondaryEntity>(entityName: entityName())
   }
 
   // swiftlint:disable implicitly_unwrapped_optional
-  @NSManaged public var name: String!
-  @NSManaged public var manyToMany: Set<MainEntity>
-  @NSManaged public var oneToMany: MainEntity?
-  @NSManaged public var oneToOne: MainEntity?
+  @NSManaged internal var name: String!
+  @NSManaged internal var manyToMany: Set<MainEntity>
+  @NSManaged internal var oneToMany: MainEntity?
+  @NSManaged internal var oneToOne: MainEntity?
   // swiftlint:enable implicitly_unwrapped_optional
 }
 
